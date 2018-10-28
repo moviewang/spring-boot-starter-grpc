@@ -10,16 +10,16 @@ import java.util.Map;
 /**
  * 序列化类型枚举
  */
-public enum SerializeType {
+public enum SerializeTypeEnum {
 
     SOFAHESSIAN(1, SofaHessianSerializeService.class),
     PROTOSTUFF(2, ProtoStuffSerializeService.class),
     FASTJSON(3, FastJSONSerializeService.class);
 
-    private static Map<Integer, SerializeType> enumMap = new HashMap<>();
+    private static Map<Integer, SerializeTypeEnum> enumMap = new HashMap<>();
 
     static {
-        for (SerializeType serializeType : SerializeType.values()) {
+        for (SerializeTypeEnum serializeType : SerializeTypeEnum.values()) {
             enumMap.put(serializeType.value, serializeType);
         }
     }
@@ -28,12 +28,12 @@ public enum SerializeType {
 
     private Class clazz;
 
-    SerializeType(int value, Class clazz){
+    SerializeTypeEnum(int value, Class clazz){
         this.clazz = clazz;
         this.value = value;
     }
 
-    public static SerializeType getSerializeTypeByValue(int value){
+    public static SerializeTypeEnum getSerializeTypeByValue(int value){
         return enumMap.get(value);
     }
 

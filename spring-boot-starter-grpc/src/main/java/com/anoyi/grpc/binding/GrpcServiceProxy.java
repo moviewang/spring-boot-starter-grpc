@@ -3,7 +3,7 @@ package com.anoyi.grpc.binding;
 import com.anoyi.grpc.GrpcClient;
 import com.anoyi.grpc.annotation.GrpcService;
 import com.anoyi.grpc.constant.GrpcResponseStatus;
-import com.anoyi.grpc.constant.SerializeType;
+import com.anoyi.grpc.constant.SerializeTypeEnum;
 import com.anoyi.grpc.exception.GrpcException;
 import com.anoyi.grpc.service.GrpcRequest;
 import com.anoyi.grpc.service.GrpcResponse;
@@ -40,8 +40,8 @@ public class GrpcServiceProxy<T> implements InvocationHandler {
         request.setClazz(className);
         request.setMethod(methodName);
         request.setArgs(args);
-        SerializeType[] serializeTypeArray = annotation.serialization();
-        SerializeType serializeType = null;
+        SerializeTypeEnum[] serializeTypeArray = annotation.serialization();
+        SerializeTypeEnum serializeType = null;
         if (serializeTypeArray.length > 0){
             serializeType = serializeTypeArray[0];
         }

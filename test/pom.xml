@@ -29,7 +29,7 @@
                     <simulationsFolder>src/test/com.anoyi.grpc.test</simulationsFolder>
                     <runMultipleSimulations>true</runMultipleSimulations>
                     <!-- 结果输出地址 -->
-                    <resultsFolder>/Users/admin/code/gatling</resultsFolder>
+                    <resultsFolder>D:\myapp</resultsFolder>
                 </configuration>
             </plugin>
         </plugins>

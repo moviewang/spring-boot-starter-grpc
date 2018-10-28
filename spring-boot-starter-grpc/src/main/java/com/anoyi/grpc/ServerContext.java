@@ -1,7 +1,7 @@
 package com.anoyi.grpc;
 
 import com.alibaba.fastjson.JSONObject;
-import com.anoyi.grpc.constant.SerializeType;
+import com.anoyi.grpc.constant.SerializeTypeEnum;
 import com.anoyi.grpc.service.GrpcRequest;
 import com.anoyi.grpc.service.GrpcResponse;
 import com.anoyi.grpc.service.SerializeService;
@@ -30,7 +30,7 @@ public class ServerContext {
     /**
      * 处理 gRPC 请求
      */
-    public GrpcResponse handle(SerializeType serializeType, GrpcRequest grpcRequest) {
+    public GrpcResponse handle(SerializeTypeEnum serializeType, GrpcRequest grpcRequest) {
         SerializeService serializeService = SerializeUtils.getSerializeService(serializeType, this.defaultSerializeService);
         ByteString bytes = serializeService.serialize(grpcRequest);
         int value = (serializeType == null ? -1 : serializeType.getValue());

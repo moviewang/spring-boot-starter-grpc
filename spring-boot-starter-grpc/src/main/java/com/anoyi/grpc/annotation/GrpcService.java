@@ -1,6 +1,6 @@
 package com.anoyi.grpc.annotation;
 
-import com.anoyi.grpc.constant.SerializeType;
+import com.anoyi.grpc.constant.SerializeTypeEnum;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
@@ -21,6 +21,6 @@ public @interface GrpcService {
     /**
      * 序列化工具实现类
      */
-    SerializeType[] serialization() default {};
+    SerializeTypeEnum[] serialization() default {};
 
 }
