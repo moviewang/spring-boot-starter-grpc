@@ -1,26 +1,29 @@
 package com.anoyi.grpc.server.service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.anoyi.grpc.facade.entity.ExpandVo;
 import com.anoyi.grpc.facade.entity.UserEntity;
 import com.anoyi.grpc.facade.service.UserServiceByFastJSON;
+import com.anoyi.grpc.server.dao.UserDao;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Service
 @Slf4j
 public class UserServiceByFastJSONImpl implements UserServiceByFastJSON {
 
+
     /**
      * 模拟数据库存储用户信息
      */
     private Map<Long, UserEntity> userMap = new ConcurrentHashMap<>();
+    @Autowired
+    private UserDao userDao;
 
     @Override
     public void insert(String userEntityJson) {
@@ -44,6 +47,16 @@ public class UserServiceByFastJSONImpl implements UserServiceByFastJSON {
     public List<UserEntity> findAll() {
         Collection<UserEntity> values = userMap.values();
         return new ArrayList<>(values);
+    }
+
+    @Override
+    public List<ExpandVo> get(int id) {
+        ArrayList<ExpandVo> list = new ArrayList<>();
+        Optional<ExpandVo> ss = userDao.findById(326018 + "");
+        if (ss.isPresent()) {
+            list.add(ss.get());
+        }
+        return list;
     }
 
 }

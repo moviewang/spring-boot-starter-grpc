@@ -1,6 +1,7 @@
 package com.anoyi.grpc.client.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.anoyi.grpc.facade.entity.ExpandVo;
 import com.anoyi.grpc.facade.entity.UserEntity;
 import com.anoyi.grpc.facade.service.UserServiceByFastJSON;
 import lombok.AllArgsConstructor;
@@ -22,8 +23,8 @@ public class V3UserController {
     }
 
     @GetMapping("/list")
-    public List<UserEntity> findAllUser(){
-        return userServiceByFastJSON.findAll();
+    public List<ExpandVo> findAllUser(){
+        return userServiceByFastJSON.get(1);
     }
 
     @PostMapping("/remove")
